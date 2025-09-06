@@ -22,11 +22,10 @@ public class JobWithHotelCreateDto {
   //숙소 관련 내용들
   private String hotelName;
   private String hotelLocation;
-  private Integer distance;
   private Boolean freeHotel;
 
   public JobWithHotelCreateDto() {}
-  public JobWithHotelCreateDto(Long id, String jobName, String companyName, Integer recruitNumber, Date recruitDeadline, Date jobDate, Integer pay, String jobLocation, String jobDetail, String hotelName, String hotelLocation, Integer distance, Boolean freeHotel) {
+  public JobWithHotelCreateDto(Long id, String jobName, String companyName, Integer recruitNumber, Date recruitDeadline, Date jobDate, Integer pay, String jobLocation, String jobDetail, String hotelName, String hotelLocation, Boolean freeHotel) {
     this.id = id;
     this.jobName = jobName;
     this.companyName = companyName;
@@ -38,7 +37,6 @@ public class JobWithHotelCreateDto {
     this.jobDetail = jobDetail;
     this.hotelName = hotelName;
     this.hotelLocation = hotelLocation;
-    this.distance = distance;
     this.freeHotel = freeHotel;
   }
 }

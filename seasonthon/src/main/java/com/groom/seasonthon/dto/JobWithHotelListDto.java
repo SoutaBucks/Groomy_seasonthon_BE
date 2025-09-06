@@ -10,16 +10,14 @@ public class JobWithHotelListDto {
   private String jobName;
   private Integer pay;
   private String hotelName;
-  private Integer distance;
 
   public JobWithHotelListDto() {}
 
-  public JobWithHotelListDto(String companyName, String jobName, Integer pay, String hotelName, Integer distance) {
+  public JobWithHotelListDto(String companyName, String jobName, Integer pay, String hotelName) {
     this.companyName = companyName;
     this.jobName = jobName;
     this.pay = pay;
     this.hotelName = hotelName;
-    this.distance = distance;
   }
 
 }

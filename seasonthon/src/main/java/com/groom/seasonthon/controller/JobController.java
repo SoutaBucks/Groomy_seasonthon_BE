@@ -39,11 +39,34 @@ public class JobController {
     return job;
   }
 
-  // 공고 등록
-  @PostMapping("")
+  // 1단계 공고 등록 (기본 정보 등록)
+  @PostMapping("/draft")
   public JobWithHotelCreateDto createJob(@RequestBody JobWithHotelCreateDto job) {
-    log.info("새 공고 등록");
+    log.info("공고 초안 등록: {}", job.getJobName());
     return jobRepository.save(job);
+  }
+
+  // 2단계 공고 등록 (숙소 정보 추가)
+  @PutMapping("/{id}/hotel")
+  public JobWithHotelCreateDto addHotelInfo(@PathVariable Long id,
+                                            @RequestBody JobWithHotelCreateDto hotelInfo) {
+    log.info("숙소 정보 추가: {}", hotelInfo.getJobName());
+
+    //숙소 정보 추가
+    JobWithHotelCreateDto unfinishedJob = jobRepository.findUnfinishedJobById(id);
+    if (unfinishedJob == null) {
+      log.warn("공고 등록 중이 아닙니다!!");
+      throw new RuntimeException("공고 등록 중 아닙");
+    }
+    try {
+      unfinishedJob.setHotelLocation(hotelInfo.getHotelLocation());
+      unfinishedJob.setHotelName(hotelInfo.getHotelName());
+      unfinishedJob.setFreeHotel(hotelInfo.getFreeHotel());
+    } catch (Exception e) {
+      jobRepository.save(unfinishedJob);
+      throw new RuntimeException();
+    }
+    return jobRepository.save(unfinishedJob);
   }
 
   //
