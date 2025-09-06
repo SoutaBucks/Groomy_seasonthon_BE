@@ -46,6 +46,7 @@ public class JobController {
 
   /*
   1단계 공고 등록 (기본 정보 등록)
+
   @PostMapping("/draft")
   public JobWithHotelCreateDto createJob(@RequestBody JobWithHotelCreateDto job) {
     log.info("공고 초안 등록: {}", job.getJobName());
