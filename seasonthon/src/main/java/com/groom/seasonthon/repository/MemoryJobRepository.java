@@ -3,6 +3,7 @@ package com.groom.seasonthon.repository;
 import com.groom.seasonthon.dto.JobWithHotelCreateDto;
 import com.groom.seasonthon.dto.JobWithHotelDetailDto;
 import com.groom.seasonthon.dto.JobWithHotelListDto;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 @Repository
 public class MemoryJobRepository implements JobRepository {
 
@@ -53,6 +55,15 @@ public class MemoryJobRepository implements JobRepository {
           job.getJobDetail(), job.getJobLocation(), job.getPay(), job.getHotelName(), job.getDistance(), job.getHotelLocation()
       );
     }
+  }
+
+  @Override
+  public Boolean delete(Long id) {
+    if(storage.containsKey(id)) {
+      storage.remove(id);
+      return true;
+    } else
+      return false;
   }
 
   @Override
