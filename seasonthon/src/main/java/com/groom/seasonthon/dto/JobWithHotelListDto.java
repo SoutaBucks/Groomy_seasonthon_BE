@@ -8,7 +8,18 @@ import lombok.Setter;
 public class JobWithHotelListDto {
   private String companyName;
   private String jobName;
-  private Long pay;
+  private Integer pay;
   private String hotelName;
-  private Long distance;
+  private Integer distance;
+
+  public JobWithHotelListDto() {}
+
+  public JobWithHotelListDto(String companyName, String jobName, Integer pay, String hotelName, Integer distance) {
+    this.companyName = companyName;
+    this.jobName = jobName;
+    this.pay = pay;
+    this.hotelName = hotelName;
+    this.distance = distance;
+  }
+
 }

@@ -1,11 +1,11 @@
 package com.groom.seasonthon.repository;
 
-import com.groom.seasonthon.dto.job.JobCreateDto;
-import com.groom.seasonthon.dto.job.JobDetailDto;
-import com.groom.seasonthon.dto.job.JobListDto;
-import com.groom.seasonthon.entity.Job;
+import com.groom.seasonthon.dto.JobWithHotelCreateDto;
+import com.groom.seasonthon.dto.JobWithHotelDetailDto;
+import com.groom.seasonthon.dto.JobWithHotelListDto;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,34 +13,50 @@ import java.util.Map;
 @Repository
 public class MemoryJobRepository implements JobRepository {
 
-  private static final Map<Long, JobCreateDto> storage = new HashMap<>();
+  private static final Map<Long, JobWithHotelCreateDto> storage = new HashMap<>();
   private static long sequence = 0L;
 
   @Override
-  public JobCreateDto save(JobCreateDto job) {
+  public JobWithHotelCreateDto save(JobWithHotelCreateDto job) {
     job.setId(++sequence);
     storage.put(job.getId(), job);
     return job;
   }
 
   @Override
-  public void delete(Long id) {
-    storage.remove(id);
+  public List<JobWithHotelListDto> findAll() {
+    List<JobWithHotelListDto> jobs = new ArrayList<>();
+
+    if(storage.isEmpty())
+      return null;
+    else {
+      for(Map.Entry<Long, JobWithHotelCreateDto> entry : storage.entrySet()) {
+        Long id = entry.getKey();
+        JobWithHotelCreateDto job = entry.getValue();
+        JobWithHotelListDto convertedJob = new JobWithHotelListDto(
+            job.getCompanyName(), job.getJobName(), job.getPay(), job.getHotelName(), job.getDistance()
+        );
+        jobs.add(convertedJob);
+      }
+      return jobs;
+    }
   }
 
   @Override
-  public JobDetailDto findById(Long id) {
-    JobCreateDto findJob = storage.get(id);
-
-  }
-
-  @Override
-  public List<JobListDto> findAll() {
-    return List.of();
+  public JobWithHotelDetailDto findbyId(Long id) {
+    JobWithHotelCreateDto job = storage.get(id);
+    if(job == null)
+      return null;
+    else {
+      return new JobWithHotelDetailDto(
+          job.getCompanyName(), job.getJobName(), job.getRecruitNumber(), job.getJobDate(),
+          job.getJobDetail(), job.getJobLocation(), job.getPay(), job.getHotelName(), job.getDistance(), job.getHotelLocation()
+      );
+    }
   }
 
   @Override
   public void clearStore() {
-
+    storage.clear();
   }
 }
