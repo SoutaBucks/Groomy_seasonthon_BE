@@ -1,0 +1,15 @@
+[33mfb80aac[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/my-new-task3[m[33m)[m Update application.properties
+[33m5926e8e[m Update application.properties
+[33ma034366[m Application 정리
+[33mcbbd46a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/feature/my-new-task3[m[33m, [m[1;31morigin/Job[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Merge pull request #4 from SoutaBucks/Job
+[33me8db61d[m 공고 정보를 등록하는 로직을 2단계로 나눴다
+[33ma4e9435[m Merge pull request #3 from SoutaBucks/Job
+[33m72a3bf6[m 백엔드 V1
+[33m7f4128b[m Merge pull request #2 from SoutaBucks/feature/my-new-task2
+[33m98ef53a[m[33m ([m[1;31morigin/feature/my-new-task2[m[33m)[m 지원하기 구현
+[33m4cbd4f9[m gitignore에 xml추가
+[33md8d4a2c[m Merge pull request #1 from SoutaBucks/Job
+[33m4b3ba60[m 기본 DTO
+[33m9bab2ed[m Job과 Hotel 내용 통합
+[33m199d1eb[m 기본적인 Dto 클래스 업로드
+[33m5edd6e8[m 기초파일_여기서 시작합시당
