@@ -19,6 +19,7 @@ public class JobWithHotelListDto {
   private String category;
   private String wageType;
   private String worktime;
+  private String jobLocation;
   private String jobLocationDetail;
   private Date jobStartDate;
   private Date jobEndDate;
