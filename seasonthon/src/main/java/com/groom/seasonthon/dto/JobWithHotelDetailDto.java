@@ -19,11 +19,10 @@ public class JobWithHotelDetailDto {
 
   // 호텔 관련
   private String hotelName;
-  private Integer distance;
   private String hotelLocation;
 
   public JobWithHotelDetailDto() {}
-  public JobWithHotelDetailDto(String companyName, String jobName, Integer recruitNumber, Date jobDate, String jobDetail, String jobLocation, Integer pay, String hotelName, Integer distance, String hotelAddress) {
+  public JobWithHotelDetailDto(String companyName, String jobName, Integer recruitNumber, Date jobDate, String jobDetail, String jobLocation, Integer pay, String hotelName, String hotelAddress) {
     this.companyName = companyName;
     this.jobName = jobName;
     this.recruitNumber = recruitNumber;
@@ -32,7 +31,6 @@ public class JobWithHotelDetailDto {
     this.jobLocation = jobLocation;
     this.pay = pay;
     this.hotelName = hotelName;
-    this.distance = distance;
     this.hotelLocation = hotelAddress;
   }
 }

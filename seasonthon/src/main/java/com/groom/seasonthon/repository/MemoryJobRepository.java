@@ -36,12 +36,17 @@ public class MemoryJobRepository implements JobRepository {
         Long id = entry.getKey();
         JobWithHotelCreateDto job = entry.getValue();
         JobWithHotelListDto convertedJob = new JobWithHotelListDto(
-            job.getCompanyName(), job.getJobName(), job.getPay(), job.getHotelName(), job.getDistance()
+            job.getCompanyName(), job.getJobName(), job.getPay(), job.getHotelName()
         );
         jobs.add(convertedJob);
       }
       return jobs;
     }
+  }
+
+  @Override
+  public JobWithHotelCreateDto findUnfinishedJobById(Long id) {
+    return storage.remove(id);
   }
 
   @Override
@@ -52,7 +57,7 @@ public class MemoryJobRepository implements JobRepository {
     else {
       return new JobWithHotelDetailDto(
           job.getCompanyName(), job.getJobName(), job.getRecruitNumber(), job.getJobDate(),
-          job.getJobDetail(), job.getJobLocation(), job.getPay(), job.getHotelName(), job.getDistance(), job.getHotelLocation()
+          job.getJobDetail(), job.getJobLocation(), job.getPay(), job.getHotelName(), job.getHotelLocation()
       );
     }
   }
