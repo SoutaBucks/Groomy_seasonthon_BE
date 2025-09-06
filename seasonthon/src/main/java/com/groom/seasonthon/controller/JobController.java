@@ -13,6 +13,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:8000")
 @RequestMapping("/api/jobs")
 public class JobController {
 
@@ -59,9 +60,11 @@ public class JobController {
       throw new RuntimeException("공고 등록 중 아닙");
     }
     try {
-      unfinishedJob.setHotelLocation(hotelInfo.getHotelLocation());
-      unfinishedJob.setHotelName(hotelInfo.getHotelName());
-      unfinishedJob.setFreeHotel(hotelInfo.getFreeHotel());
+      unfinishedJob.setHotelType(hotelInfo.getHotelType());
+      unfinishedJob.setCanSmoke(hotelInfo.getCanSmoke());
+      unfinishedJob.setWantBreakFast(hotelInfo.getWantBreakFast());
+      unfinishedJob.setHotelRules(hotelInfo.getHotelRules());
+      unfinishedJob.setHotelPrice(hotelInfo.getHotelPrice());
     } catch (Exception e) {
       jobRepository.save(unfinishedJob);
       throw new RuntimeException();

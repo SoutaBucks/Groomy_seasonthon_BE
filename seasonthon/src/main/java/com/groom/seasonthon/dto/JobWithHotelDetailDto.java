@@ -1,36 +1,37 @@
 package com.groom.seasonthon.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class JobWithHotelDetailDto {
   // 직업 관련
+  private Long id;
   private String companyName;
   private String jobName;
   private Integer recruitNumber;
-  private String jobDetail;
-  private Date jobDate;
+  private Date jobStartDate;
+  private Date jobEndDate;
   private String jobLocation;
+  private String jobLocationDetail;
   private Integer pay;
+  private String[] benefits;
+  private String wageType;
+  private String worktime;
+
 
   // 호텔 관련
-  private String hotelName;
-  private String hotelLocation;
+  private String hotelType;
+  private Boolean canSmoke;
+  private Boolean wantBreakFast;
+  private String hotelRules;
+  private Integer hotelPrice;
 
-  public JobWithHotelDetailDto() {}
-  public JobWithHotelDetailDto(String companyName, String jobName, Integer recruitNumber, Date jobDate, String jobDetail, String jobLocation, Integer pay, String hotelName, String hotelAddress) {
-    this.companyName = companyName;
-    this.jobName = jobName;
-    this.recruitNumber = recruitNumber;
-    this.jobDate = jobDate;
-    this.jobDetail = jobDetail;
-    this.jobLocation = jobLocation;
-    this.pay = pay;
-    this.hotelName = hotelName;
-    this.hotelLocation = hotelAddress;
-  }
 }
