@@ -6,13 +6,17 @@ import com.groom.seasonthon.dto.JobWithHotelListDto;
 import com.groom.seasonthon.repository.JobRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:8000")
 @RequestMapping("/api/jobs")
 public class JobController {
 
@@ -39,7 +43,8 @@ public class JobController {
     return job;
   }
 
-  // 1단계 공고 등록 (기본 정보 등록)
+
+  //1단계 공고 등록 (기본 정보 등록)
   @PostMapping("/draft")
   public JobWithHotelCreateDto createJob(@RequestBody JobWithHotelCreateDto job) {
     log.info("공고 초안 등록: {}", job.getJobName());
@@ -48,6 +53,7 @@ public class JobController {
 
   // 2단계 공고 등록 (숙소 정보 추가)
   @PutMapping("/{id}/hotel")
+  @CrossOrigin(origins = "http://localhost:8000")
   public JobWithHotelCreateDto addHotelInfo(@PathVariable Long id,
                                             @RequestBody JobWithHotelCreateDto hotelInfo) {
     log.info("숙소 정보 추가: {}", hotelInfo.getJobName());
@@ -59,9 +65,11 @@ public class JobController {
       throw new RuntimeException("공고 등록 중 아닙");
     }
     try {
-      unfinishedJob.setHotelLocation(hotelInfo.getHotelLocation());
-      unfinishedJob.setHotelName(hotelInfo.getHotelName());
-      unfinishedJob.setFreeHotel(hotelInfo.getFreeHotel());
+      unfinishedJob.setHotelType(hotelInfo.getHotelType());
+      unfinishedJob.setCanSmoke(hotelInfo.getCanSmoke());
+      unfinishedJob.setWantBreakFast(hotelInfo.getWantBreakFast());
+      unfinishedJob.setHotelRules(hotelInfo.getHotelRules());
+      unfinishedJob.setHotelPrice(hotelInfo.getHotelPrice());
     } catch (Exception e) {
       jobRepository.save(unfinishedJob);
       throw new RuntimeException();
