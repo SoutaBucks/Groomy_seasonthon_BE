@@ -36,7 +36,8 @@ public class MemoryJobRepository implements JobRepository {
         Long id = entry.getKey();
         JobWithHotelCreateDto job = entry.getValue();
         JobWithHotelListDto convertedJob = new JobWithHotelListDto(
-            job.getCompanyName(), job.getJobName(), job.getPay(), job.getHotelName()
+            job.getId(), job.getCompanyName(), job.getJobName(), job.getPay(), job.getCategory(), job.getWageType(), job.getWorktime(), job.getJobLocationDetail(),
+            job.getJobStartDate(), job.getJobEndDate(), job.getHotelType(), job.getCanSmoke(), job.getWantBreakFast(), job.getHotelRules(), job.getHotelPrice()
         );
         jobs.add(convertedJob);
       }
@@ -56,8 +57,8 @@ public class MemoryJobRepository implements JobRepository {
       return null;
     else {
       return new JobWithHotelDetailDto(
-          job.getCompanyName(), job.getJobName(), job.getRecruitNumber(), job.getJobDate(),
-          job.getJobDetail(), job.getJobLocation(), job.getPay(), job.getHotelName(), job.getHotelLocation()
+          job.getId(), job.getCompanyName(), job.getJobName(), job.getRecruitNumber(), job.getJobStartDate(), job.getJobEndDate(), job.getJobLocation(), job.getJobLocationDetail(),
+          job.getPay(), job.getBenefits(), job.getWageType(), job.getWorktime(), job.getHotelType(), job.getCanSmoke(), job.getWantBreakFast(), job.getHotelRules(), job.getHotelPrice()
       );
     }
   }
