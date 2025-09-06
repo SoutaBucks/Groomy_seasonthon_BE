@@ -36,7 +36,7 @@ public class MemoryJobRepository implements JobRepository {
         Long id = entry.getKey();
         JobWithHotelCreateDto job = entry.getValue();
         JobWithHotelListDto convertedJob = new JobWithHotelListDto(
-                job.getId(), job.getCompanyName(), job.getJobName(), job.getPay(), job.getCategory(), job.getWageType(), job.getWorktime(), job.getJobLocationDetail(),
+                job.getId(), job.getCompanyName(), job.getJobName(), job.getPay(), job.getCategory(), job.getWageType(), job.getWorktime(), job.getJobLocation(), job.getJobLocationDetail(),
                 job.getJobStartDate(), job.getJobEndDate(), job.getHotelType(), job.getCanSmoke(), job.getWantBreakFast(), job.getHotelRules(), job.getHotelPrice()
         );
         jobs.add(convertedJob);
