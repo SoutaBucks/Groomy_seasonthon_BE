@@ -95,5 +95,7 @@ public class JobController {
 
   //
   //@DeleteMapping("/{id}")   // 공고 삭제
+
+
 }
 
