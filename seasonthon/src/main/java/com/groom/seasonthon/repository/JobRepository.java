@@ -11,6 +11,7 @@ public interface JobRepository {
   JobWithHotelCreateDto save(JobWithHotelCreateDto job);
   List<JobWithHotelListDto> findAll();
   JobWithHotelDetailDto findbyId(Long id);
+  Boolean delete(Long id);
   //추후 업데이트 기능 추가
   void clearStore();  // 저장소 비우기
 }
