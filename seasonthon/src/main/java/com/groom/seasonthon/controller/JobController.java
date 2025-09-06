@@ -44,13 +44,26 @@ public class JobController {
   }
 
 
-  //1단계 공고 등록 (기본 정보 등록)
+  /*
+  1단계 공고 등록 (기본 정보 등록)
+
   @PostMapping("/draft")
   public JobWithHotelCreateDto createJob(@RequestBody JobWithHotelCreateDto job) {
     log.info("공고 초안 등록: {}", job.getJobName());
     return jobRepository.save(job);
-  }
+  }*/
 
+  @PostMapping("/draft")
+  public ResponseEntity<Map<String, Object>> createJob(@RequestBody JobWithHotelCreateDto job) {
+    log.info("공고 초안 등록: {}", job.getJobName());
+    JobWithHotelCreateDto savedJob = jobRepository.save(job);  // ← 데이터 저장됨
+
+    Map<String, Object> response = new HashMap<>();
+    response.put("id", savedJob.getId());
+    response.put("redirectUrl", "room.html?id=" + savedJob.getId());
+
+    return ResponseEntity.ok(response);  // ← 저장된 데이터와 함께 응답
+  }
   // 2단계 공고 등록 (숙소 정보 추가)
   @PutMapping("/{id}/hotel")
   @CrossOrigin(origins = "http://localhost:8000")

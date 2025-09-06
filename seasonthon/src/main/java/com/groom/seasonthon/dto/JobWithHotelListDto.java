@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,6 +20,8 @@ public class JobWithHotelListDto {
   private String wageType;
   private String worktime;
   private String jobLocationDetail;
+  private Date jobStartDate;
+  private Date jobEndDate;
 
   private String hotelType;
   private Boolean canSmoke;

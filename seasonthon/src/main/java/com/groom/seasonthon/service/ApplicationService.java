@@ -1,6 +1,8 @@
 package com.groom.seasonthon.service;
 
 import com.groom.seasonthon.dto.ApplicationCreateDto;
+import com.groom.seasonthon.dto.ApplicationDto; // ApplicationDto가 있다고 가정
+//import com.groom.seasonthon.entity.Application;
 import com.groom.seasonthon.dto.ApplicationDto;
 import com.groom.seasonthon.entity.Application;
 import com.groom.seasonthon.entity.Job;
